@@ -20,13 +20,10 @@ class HomePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                'Mestres',
-                style: TextStyle(
-                  fontFamily: 'LDFComicSans',
-                  fontSize: 66.0,
-                  shadows: kTextShadows,
-                ),
+              const RegularText(
+                content: 'Mestres',
+                fontSize: 66.0,
+                withShadows: true,
               ),
               const RegularText(content: 'do'),
               const AccentText(content: 'Jokenpô'),
