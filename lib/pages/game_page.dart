@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../components/accent_text.dart';
+
 class GameScreen extends StatefulWidget {
   const GameScreen({Key? key}) : super(key: key);
 
@@ -12,9 +14,8 @@ class _GameScreenState extends State<GameScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Jokenpô'),
+        title: const AccentText(content: 'Jokenpô'),
       ),
     );
-    
   }
 }

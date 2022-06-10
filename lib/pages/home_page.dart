@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:prog4_avaliacao1/consts/colors.dart';
 
+import '../components/accent_text.dart';
 import '../consts/typography.dart';
 import 'game_page.dart';
 
 class HomePage extends StatelessWidget {
-
   const HomePage({Key? key}) : super(key: key);
 
   @override
@@ -34,29 +34,10 @@ class HomePage extends StatelessWidget {
                   fontSize: 30.0,
                 ),
               ),
-               Stack(
-                 children:[
-                  Text(
-                  'Jokenpô',
-                  style: TextStyle(
-                    //color: Colors.white,
-                    fontFamily: 'BubbleShine',
-                    fontSize: 66.0,
-                    shadows: kTextShadows,
-                    foreground: Paint()..style = PaintingStyle.stroke..strokeWidth = 5..color = Colors.black,
-                  ),
-                             ),
-               const Text(
-                'Jokenpô',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontFamily: 'BubbleShine',
-                  fontSize: 66.0,
-                  shadows: kTextShadows,
-                ),
+              const AccentText(content: 'Jokenpô'),
+              const SizedBox(
+                height: 30.0,
               ),
-            ]),
-            const SizedBox(height: 30.0,),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   primary: kColor3,
@@ -70,7 +51,10 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const GameScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const GameScreen()));
                 },
                 child: const ImageIcon(
                   AssetImage('lib/assets/icons/play_icon.png'),
