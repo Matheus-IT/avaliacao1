@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
 const kTextShadows = [
-  Shadow(
-    offset: Offset(2.0, 2.0),
-    blurRadius: 3.0,
-    color: Color.fromARGB(255, 124, 124, 124),
-  ),
-  Shadow(
-    offset: Offset(2.0, 2.0),
-    blurRadius: 3.0,
-    color: Color.fromARGB(255, 124, 124, 124),
+
+  BoxShadow(
+    color: Color.fromARGB(150, 0, 0, 0),
+    offset: Offset(-3, 5),
+    spreadRadius: 1,
+    blurRadius: 1.0,
+
+
   ),
 ];
