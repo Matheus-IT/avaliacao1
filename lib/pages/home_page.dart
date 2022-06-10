@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:prog4_avaliacao1/consts/colors.dart';
 
 import '../components/accent_text.dart';
+import '../components/bottom_info.dart';
 import '../components/play_button.dart';
 import '../components/regular_text.dart';
 
@@ -22,9 +23,9 @@ class HomePage extends StatelessWidget {
               RegularText(
                 content: 'Mestres',
                 fontSize: 66.0,
-                withShadows: true,
+                withShadows: true, color: kBlack,
               ),
-              RegularText(content: 'do'),
+              RegularText(content: 'do', color: kBlack,),
               AccentText(content: 'Jokenpô'),
               SizedBox(
                 height: 30.0,
@@ -34,6 +35,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: const BottomLabel(),
     );
   }
 }
