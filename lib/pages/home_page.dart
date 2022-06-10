@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:prog4_avaliacao1/consts/colors.dart';
 
 import '../components/accent_text.dart';
+import '../components/regular_text.dart';
 import '../consts/typography.dart';
 import 'game_page.dart';
 
@@ -27,13 +28,7 @@ class HomePage extends StatelessWidget {
                   shadows: kTextShadows,
                 ),
               ),
-              const Text(
-                'do',
-                style: TextStyle(
-                  fontFamily: 'LDFComicSans',
-                  fontSize: 30.0,
-                ),
-              ),
+              const RegularText(content: 'do'),
               const AccentText(content: 'Jokenpô'),
               const SizedBox(
                 height: 30.0,
