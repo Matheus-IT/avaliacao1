@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:prog4_avaliacao1/consts/colors.dart';
 
+import '../consts/typography.dart';
+
 class HomePage extends StatelessWidget {
   final String title;
 
@@ -9,50 +11,53 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Test1',
-              style: TextStyle(
-                fontFamily: 'BubbleShine',
-                fontSize: 30.0,
+      body: Container(
+        color: kColor1,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Mestres',
+                style: TextStyle(
+                  fontFamily: 'LDFComicSans',
+                  fontSize: 66.0,
+                  shadows: kTextShadows,
+                ),
               ),
-            ),
-            Text(
-              'Test2',
-              style: TextStyle(
-                fontFamily: 'LDFComicSans',
-                fontSize: 30.0,
+              Text(
+                'do',
+                style: TextStyle(
+                  fontFamily: 'LDFComicSans',
+                  fontSize: 30.0,
+                  shadows: kTextShadows,
+                ),
               ),
-            ),
-            Container(
-              color: kColor1,
-              width: 50,
-              height: 50,
-            ),
-            Container(
-              color: kColor2,
-              width: 50,
-              height: 50,
-            ),
-            Container(
-              color: kColor3,
-              width: 50,
-              height: 50,
-            ),
-            Container(
-              color: kWhite,
-              width: 50,
-              height: 50,
-            ),
-            Container(
-              color: kBlack,
-              width: 50,
-              height: 50,
-            ),
-          ],
+              Text(
+                'Jokenpô',
+                style: TextStyle(
+                  fontFamily: 'BubbleShine',
+                  fontSize: 66.0,
+                  shadows: kTextShadows,
+                ),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: kColor3,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 64.0,
+                    vertical: 16.0,
+                  ),
+                  side: BorderSide(
+                    width: 1.0,
+                    color: kBlack,
+                  ),
+                ),
+                onPressed: () {},
+                child: Text('play'),
+              )
+            ],
+          ),
         ),
       ),
     );
