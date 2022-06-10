@@ -14,7 +14,7 @@ class _GameScreenState extends State<GameScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const AccentText(content: 'Jokenpô'),
+        title: const AccentText(content: 'Jokenpô', fontSize: 46.0),
       ),
     );
   }

@@ -4,10 +4,12 @@ import '../consts/typography.dart';
 
 class AccentText extends StatelessWidget {
   final String content;
+  final double fontSize;
 
   const AccentText({
     Key? key,
     required this.content,
+    this.fontSize = 66.0,
   }) : super(key: key);
 
   @override
@@ -17,7 +19,7 @@ class AccentText extends StatelessWidget {
         content,
         style: TextStyle(
           fontFamily: 'BubbleShine',
-          fontSize: 66.0,
+          fontSize: fontSize,
           shadows: kTextShadows,
           foreground: Paint()
             ..style = PaintingStyle.stroke
@@ -27,10 +29,10 @@ class AccentText extends StatelessWidget {
       ),
       Text(
         content,
-        style: const TextStyle(
+        style: TextStyle(
           color: Colors.white,
           fontFamily: 'BubbleShine',
-          fontSize: 66.0,
+          fontSize: fontSize,
           shadows: kTextShadows,
         ),
       ),
