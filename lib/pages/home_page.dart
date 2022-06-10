@@ -54,7 +54,10 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {},
-                child: Text('play'),
+                child: ImageIcon(
+                  AssetImage('lib/assets/icons/play_icon.png'),
+                  color: kBlack,
+                ),
               )
             ],
           ),
