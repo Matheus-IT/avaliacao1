@@ -10,21 +10,17 @@ class BottomLabel extends StatelessWidget {
       color: kColor3,
       width: 150,
       height: 50,
-      child: Padding(
-        padding: const EdgeInsets.all(5.0),
-        child: Row(
-          children: const [
-            Text('Equipe: Adaline Nogueira, Matheus Costa, Thiago Vinicios',
-            style: TextStyle(
-              fontSize: 15,
-              color: kMidnight,
-              fontWeight: FontWeight.bold
-            ),
-            ),
-          ],
+      child: const Padding(
+        padding: EdgeInsets.all(8.0),
+        child: Text(
+          'Equipe: Adaline Nogueira, Matheus Costa, Thiago Vinicios ',
+          style: TextStyle(
+            fontSize: 15,
+            color: kMidnight,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
-    
   }
 }
