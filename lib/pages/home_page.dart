@@ -5,6 +5,7 @@ import '../components/accent_text.dart';
 import '../components/bottom_info.dart';
 import '../components/play_button.dart';
 import '../components/regular_text.dart';
+import '../consts/game_primary_background.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,13 +14,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('lib/assets/images/background.png'),
-            fit: BoxFit.cover
-            ),
-          color: kColor1,
-        ),
+        decoration: kGamePrimaryBackground,
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -27,9 +22,11 @@ class HomePage extends StatelessWidget {
               RegularText(
                 content: 'Mestres',
                 fontSize: 66.0,
-                withShadows: true, color: kBlack,
+                withShadows: true,
               ),
-              RegularText(content: 'do', color: kBlack,),
+              RegularText(
+                content: 'do',
+              ),
               AccentText(content: 'Jokenpô'),
               SizedBox(
                 height: 30.0,
