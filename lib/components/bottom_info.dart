@@ -25,6 +25,5 @@ class BottomLabel extends StatelessWidget {
         ),
       ),
     );
-    
   }
 }
