@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:prog4_avaliacao1/consts/colors.dart';
 
 import '../consts/typography.dart';
 
 class RegularText extends StatelessWidget {
   final String content;
   final double fontSize;
-  final bool withShadows;
-  final Color color; // Add shadows to text or not
+  final bool withShadows; // Add shadows to text or not
+  final Color color;
 
   const RegularText({
     Key? key,
     required this.content,
     this.fontSize = 30.0,
     this.withShadows = false,
-    required this.color,
+    this.color = kBlack,
   }) : super(key: key);
 
   @override
