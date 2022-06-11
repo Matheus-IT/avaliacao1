@@ -93,9 +93,13 @@ class _GameScreenState extends State<GameScreen> {
                                   width: 70,
                                   height: 70,
                                   decoration: BoxDecoration(
-                                      //image: const DecorationImage(image: AssetImage('')),
-                                      color: Colors.blue,
-                                      borderRadius: BorderRadius.circular(70)),
+                                    image: const DecorationImage(
+                                      image: AssetImage(
+                                          'lib/assets/icons/rock.png'),
+                                    ),
+                                    color: Colors.blue,
+                                    borderRadius: BorderRadius.circular(70),
+                                  ),
                                 ),
                               ),
                               GestureDetector(
