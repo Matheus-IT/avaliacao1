@@ -14,6 +14,10 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('lib/assets/images/background.png'),
+            fit: BoxFit.cover
+            ),
           color: kColor1,
         ),
         child: Center(

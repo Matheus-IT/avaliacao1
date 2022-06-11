@@ -14,7 +14,7 @@ class BottomLabel extends StatelessWidget {
         padding: const EdgeInsets.all(5.0),
         child: Row(
           children: const [
-            Text('Equipe: Adaline Nogueira, Matheus Costa, Thiago Vinicios',
+            Text('Adaline Nogueira, Matheus Costa, Thiago Vinicios',
             style: TextStyle(
               fontSize: 15,
               color: kMidnight,
