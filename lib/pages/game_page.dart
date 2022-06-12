@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../components/regular_text.dart';
+import '../components/score_counter.dart';
 import '../consts/game_primary_background.dart';
 import '../models/player.dart';
 import '../components/accent_text.dart';
@@ -86,27 +86,13 @@ class _GamePageState extends State<GamePage> {
         backgroundColor: kColor3,
         title: const AccentText(content: 'Jokenpô', fontSize: 46.0),
         actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 15),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: const [
-                RegularText(
-                  content: 'P: 0',
-                  fontSize: 25,
-                  color: kBlack,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                RegularText(
-                  content: 'M: 0',
-                  fontSize: 25,
-                  color: kBlack,
-                ),
-              ],
+          SizedBox(
+            width: 150,
+            child: ScoreCounter(
+              playerPoints: player.points,
+              computerPoints: computer.points,
             ),
-          ),
+          )
         ],
       ),
       body: Container(
