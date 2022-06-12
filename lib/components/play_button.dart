@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:prog4_avaliacao1/pages/game_page.dart';
+import 'package:prog4_avaliacao1/pages/battle_page.dart';
 
 import '../consts/colors.dart';
 
@@ -23,8 +23,8 @@ class PlayButton extends StatelessWidget {
         ),
       ),
       onPressed: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const GamePage()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const BattlePage()));
       },
       child: const ImageIcon(
         AssetImage('lib/assets/icons/play_icon.png'),

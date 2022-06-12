@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:prog4_avaliacao1/components/bottom_info.dart';
 import '../components/accent_text.dart';
 import '../models/game_functions.dart';
 import '../consts/colors.dart';
@@ -65,7 +66,7 @@ class _BattlePageState extends State<BattlePage> {
           Stack(
             children: [
               Container(
-                height: screenSize.height * .45,
+                height: screenSize.height * .40,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('lib/assets/images/enemy.png'),
@@ -75,12 +76,12 @@ class _BattlePageState extends State<BattlePage> {
               ),
             ],
           ),
-          const SizedBox(height: 95),
+          const SizedBox(height: 50),
           Align(
             heightFactor: 1.0,
             child: Container(
               width: 600,
-              height: screenSize.height * 35,
+              height: screenSize.height * 45,
               decoration: const BoxDecoration(
                   color: kColor3,
                   borderRadius: BorderRadius.only(
@@ -88,6 +89,7 @@ class _BattlePageState extends State<BattlePage> {
                       topRight: Radius.circular(15))),
               child: Column(
                 children: [
+                  const SizedBox(height: 8),
                   Card(
                     color: battleMessenger[result],
                     shape: RoundedRectangleBorder(
@@ -183,7 +185,9 @@ class _BattlePageState extends State<BattlePage> {
                     elevation: 2,
                     child: InkWell(
                       child: Container(
-                        width: 100.0,
+                        alignment: Alignment.center,
+                        width: 200.0,
+                        height: 34.0,
                         padding: const EdgeInsets.all(5),
                         child: const Text(
                           'Reiniciar',
@@ -208,6 +212,7 @@ class _BattlePageState extends State<BattlePage> {
           ),
         ],
       ),
+      bottomNavigationBar: const BottomLabel(),
     );
   }
 
