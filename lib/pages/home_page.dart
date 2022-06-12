@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:prog4_avaliacao1/consts/colors.dart';
 
 import '../components/accent_text.dart';
 import '../components/bottom_info.dart';

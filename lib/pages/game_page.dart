@@ -8,36 +8,51 @@ import '../components/game_choice_icon.dart';
 import '../components/play_area.dart';
 import '../consts/colors.dart';
 
-class GameScreen extends StatefulWidget {
-  const GameScreen({Key? key}) : super(key: key);
+class GamePage extends StatefulWidget {
+  const GamePage({Key? key}) : super(key: key);
 
   @override
-  State<GameScreen> createState() => _GameScreenState();
+  State<GamePage> createState() => _GamePageState();
 }
 
-class _GameScreenState extends State<GameScreen> {
+class _GamePageState extends State<GamePage> {
   final player = Player(profile: Profile.person);
   final computer = Player(profile: Profile.computer);
+
+  String battleMessage = 'Faça sua jogada';
+
+  String _translateGameElement(GameElement element) {
+    /// Translates the game element to a portuguese string
+    switch (element) {
+      case GameElement.rock:
+        return 'pedra';
+      case GameElement.paper:
+        return 'papel';
+      case GameElement.scissors:
+        return 'tesoura';
+    }
+  }
 
   void handleElementChosen(GameElement chosenElement) {
     if (chosenElement == GameElement.rock &&
         player.lastChosen == GameElement.rock) {
-      debugPrint('Play again?');
+      battleMessage = 'Você não pode jogar pedra duas vezes!';
+      setState(() => battleMessage);
       return;
     }
 
     GameElement computerChoice = computer.choose();
 
-    debugPrint('-------------------------------------');
-    debugPrint('Computer $computerChoice');
-    debugPrint('Player $chosenElement');
+    battleMessage = 'Computador jogou ${_translateGameElement(computerChoice)}';
 
     if (_playerHasWon(chosenElement, computerChoice)) {
       player.increasePoints();
+      battleMessage += ' Você ganhou';
     } else if (chosenElement == computerChoice) {
-      debugPrint('Draw'); // I don't know what to do...
+      battleMessage += ' Empate';
     } else {
       computer.increasePoints();
+      battleMessage += ' Você perdeu';
     }
 
     debugPrint('Computer ${computer.points}');
@@ -47,6 +62,8 @@ class _GameScreenState extends State<GameScreen> {
     // Store as the last chosen for future evaluation
     player.lastChosen = chosenElement;
     computer.lastChosen = computerChoice;
+
+    setState(() => battleMessage);
   }
 
   bool _playerHasWon(GameElement playerChoice, GameElement computerChoice) {
@@ -109,7 +126,7 @@ class _GameScreenState extends State<GameScreen> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 PlayArea(
-                  title: 'Faça sua jogada',
+                  title: battleMessage,
                   playIcons: [
                     GameChoiceIcon(
                       imgPath: 'lib/assets/icons/rock.png',

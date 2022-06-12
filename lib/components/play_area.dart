@@ -33,7 +33,7 @@ class PlayArea extends StatelessWidget {
           children: [
             RegularText(
               content: title,
-              fontSize: 25,
+              fontSize: 20,
             ),
             Container(
               height: 150,
