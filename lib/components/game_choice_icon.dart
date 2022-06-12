@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 
 class GameChoiceIcon extends StatelessWidget {
   final String imgPath;
+  final Function() onElementChosen;
+
   const GameChoiceIcon({
     Key? key,
     required this.imgPath,
+    required this.onElementChosen,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onElementChosen,
       child: Container(
         width: 70,
         height: 70,
@@ -20,8 +23,6 @@ class GameChoiceIcon extends StatelessWidget {
               imgPath,
             ),
           ),
-          color: Colors.blue,
-          borderRadius: BorderRadius.circular(70),
         ),
       ),
     );

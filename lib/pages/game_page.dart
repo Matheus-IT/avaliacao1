@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:prog4_avaliacao1/components/regular_text.dart';
-import 'package:prog4_avaliacao1/consts/game_primary_background.dart';
 
+import '../components/regular_text.dart';
+import '../consts/game_primary_background.dart';
+import '../models/player.dart';
 import '../components/accent_text.dart';
 import '../components/game_choice_icon.dart';
 import '../components/play_area.dart';
@@ -15,8 +16,8 @@ class GameScreen extends StatefulWidget {
 }
 
 class _GameScreenState extends State<GameScreen> {
-  void checkPlayerMove() {
-    return debugPrint('Pedra');
+  void handleElementChosen(GameElements chosenElement) {
+    return debugPrint(chosenElement.toString());
   }
 
   @override
@@ -64,18 +65,24 @@ class _GameScreenState extends State<GameScreen> {
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: const [
+              children: [
                 PlayArea(
                   title: 'Faça sua jogada',
                   playIcons: [
                     GameChoiceIcon(
                       imgPath: 'lib/assets/icons/rock.png',
+                      onElementChosen: () =>
+                          handleElementChosen(GameElements.rock),
                     ),
                     GameChoiceIcon(
                       imgPath: 'lib/assets/icons/scissors.png',
+                      onElementChosen: () =>
+                          handleElementChosen(GameElements.scissors),
                     ),
                     GameChoiceIcon(
                       imgPath: 'lib/assets/icons/paper.png',
+                      onElementChosen: () =>
+                          handleElementChosen(GameElements.paper),
                     )
                   ],
                 ),
