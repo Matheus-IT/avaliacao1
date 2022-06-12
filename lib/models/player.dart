@@ -1,9 +1,11 @@
+import 'dart:math';
+
 enum Profile {
   computer,
   person,
 }
 
-enum GameElements {
+enum GameElement {
   rock,
   paper,
   scissors,
@@ -11,7 +13,17 @@ enum GameElements {
 
 class Player {
   Profile profile;
-  GameElements? lastPlay;
+  GameElement? lastChosen;
+  int points = 0;
 
   Player({required this.profile});
+
+  GameElement choose() {
+    int randomChosen = Random().nextInt(GameElement.values.length);
+    return GameElement.values[randomChosen];
+  }
+
+  void increasePoints() {
+    points++;
+  }
 }

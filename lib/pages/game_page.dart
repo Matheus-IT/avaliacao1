@@ -16,8 +16,50 @@ class GameScreen extends StatefulWidget {
 }
 
 class _GameScreenState extends State<GameScreen> {
-  void handleElementChosen(GameElements chosenElement) {
-    return debugPrint(chosenElement.toString());
+  final player = Player(profile: Profile.person);
+  final computer = Player(profile: Profile.computer);
+
+  void handleElementChosen(GameElement chosenElement) {
+    if (chosenElement == GameElement.rock &&
+        player.lastChosen == GameElement.rock) {
+      debugPrint('Play again?');
+      return;
+    }
+
+    GameElement computerChoice = computer.choose();
+
+    debugPrint('-------------------------------------');
+    debugPrint('Computer $computerChoice');
+    debugPrint('Player $chosenElement');
+
+    if (_playerHasWon(chosenElement, computerChoice)) {
+      player.increasePoints();
+    } else if (chosenElement == computerChoice) {
+      debugPrint('Draw'); // I don't know what to do...
+    } else {
+      computer.increasePoints();
+    }
+
+    debugPrint('Computer ${computer.points}');
+    debugPrint('Player ${player.points}');
+    debugPrint('-------------------------------------');
+
+    // Store as the last chosen for future evaluation
+    player.lastChosen = chosenElement;
+    computer.lastChosen = computerChoice;
+  }
+
+  bool _playerHasWon(GameElement playerChoice, GameElement computerChoice) {
+    /// rock > defeats > scissors
+    /// scissors > defeats > paper
+    /// paper > defeats > rock
+
+    return playerChoice == GameElement.paper &&
+            computerChoice == GameElement.rock ||
+        playerChoice == GameElement.rock &&
+            computerChoice == GameElement.scissors ||
+        playerChoice == GameElement.scissors &&
+            computerChoice == GameElement.paper;
   }
 
   @override
@@ -72,17 +114,17 @@ class _GameScreenState extends State<GameScreen> {
                     GameChoiceIcon(
                       imgPath: 'lib/assets/icons/rock.png',
                       onElementChosen: () =>
-                          handleElementChosen(GameElements.rock),
+                          handleElementChosen(GameElement.rock),
                     ),
                     GameChoiceIcon(
                       imgPath: 'lib/assets/icons/scissors.png',
                       onElementChosen: () =>
-                          handleElementChosen(GameElements.scissors),
+                          handleElementChosen(GameElement.scissors),
                     ),
                     GameChoiceIcon(
                       imgPath: 'lib/assets/icons/paper.png',
                       onElementChosen: () =>
-                          handleElementChosen(GameElements.paper),
+                          handleElementChosen(GameElement.paper),
                     )
                   ],
                 ),
