@@ -25,14 +25,16 @@ class _BattlePageState extends State<BattlePage> {
   var gameplay = {
     "0": " Você perdeu!",
     "1": "Você Venceu!",
-    "2": "Empate!."
+    "2": "Empate!.",
+    "3": "Falta! Pedra 2x não pode!"
   };
 
   var battleMessenger = {
    -1: kWhite, //neutral color for the first move
     0: kColor5,
     1: kColor6,
-    2: kColor7
+    2: kColor7,
+    3: kFault
   };
 
   int result = -1;
@@ -189,6 +191,7 @@ class _BattlePageState extends State<BattlePage> {
                           computerPoints = 0;
                           computerMove = "";
                           result = -1;
+                          loseCondition = 0;
                         });
                       },
                     ),
@@ -203,6 +206,11 @@ class _BattlePageState extends State<BattlePage> {
   }
 
   int getWinner(String playerChoice, String computerChoice) {
+    if (playerChoice == "pedra"){
+      loseCondition++;
+    }if(loseCondition > 1){
+      return 3;
+    }
     if ((playerChoice == "pedra" && computerChoice == "papel") ||
         (playerChoice == "papel" && computerChoice == "tesoura") ||
         (playerChoice == "tesoura" && computerChoice == "pedra")) {
@@ -221,10 +229,14 @@ class _BattlePageState extends State<BattlePage> {
       if (result == 0) {
         playerPoints = playerPoints;
         computerPoints = computerPoints + 1;
+        loseCondition = 0;
       } else if (result == 1) {
         playerPoints = playerPoints + 1;
         computerPoints = computerPoints;
-      } else {
+      } else if (result == 3){
+        computerPoints = computerPoints + 1;
+        loseCondition = 0;
+      }else {
         playerPoints = playerPoints;
         computerPoints = computerPoints;
       }
