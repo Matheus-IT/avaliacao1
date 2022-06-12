@@ -19,6 +19,7 @@ class PlayArea extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
+      height: 280,
       decoration: const BoxDecoration(
         color: kColor3,
         borderRadius: BorderRadius.only(
@@ -26,7 +27,6 @@ class PlayArea extends StatelessWidget {
           topLeft: Radius.circular(15),
         ),
       ),
-      height: 250,
       child: Padding(
         padding: const EdgeInsets.only(top: 15),
         child: Column(
