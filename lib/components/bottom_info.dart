@@ -8,20 +8,14 @@ class BottomLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: kColor3,
-      width: 150,
+      width: double.infinity,
       height: 50,
-      child: Padding(
-        padding: const EdgeInsets.all(5.0),
-        child: Row(
-          children: const [
-            Text('Adaline Nogueira, Matheus Costa, Thiago Vinicios',
-            style: TextStyle(
-              fontSize: 15,
-              color: kMidnight,
-              fontWeight: FontWeight.bold
-            ),
-            ),
-          ],
+      child: const Padding(
+        padding: EdgeInsets.all(5.0),
+        child: Text(
+          'Adaline Nogueira, Matheus Costa, Thiago Vinicios',
+          style: TextStyle(
+              fontSize: 15, color: kMidnight, fontWeight: FontWeight.bold),
         ),
       ),
     );

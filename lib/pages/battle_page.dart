@@ -38,12 +38,6 @@ class _BattlePageState extends State<BattlePage> {
   int computerPoints = 0;
   int loseCondition = 0;
 
-  void _handleGameElementChosen(String element) {
-    computerMove = gameChoices[_randomPick.nextInt(gameChoices.length)];
-    result = getWinner(element, computerMove);
-    stateChange(result);
-  }
-
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -66,7 +60,7 @@ class _BattlePageState extends State<BattlePage> {
           Stack(
             children: [
               Container(
-                height: screenSize.height * .40,
+                height: screenSize.height * .38,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('lib/assets/images/enemy.png'),
@@ -76,7 +70,7 @@ class _BattlePageState extends State<BattlePage> {
               ),
             ],
           ),
-          const SizedBox(height: 50),
+          const SizedBox(height: 95),
           Align(
             heightFactor: 1.0,
             child: Container(
@@ -118,7 +112,7 @@ class _BattlePageState extends State<BattlePage> {
                         child: Card(
                           color: kColor3,
                           shape: const CircleBorder(),
-                          elevation: 0,
+                          elevation: 1,
                           child: InkWell(
                             radius: 45,
                             focusColor: Colors.transparent,
@@ -127,7 +121,12 @@ class _BattlePageState extends State<BattlePage> {
                             splashColor: kColor4,
                             child:
                                 getImage("lib/assets/icons/rock.png", context),
-                            onTap: () => _handleGameElementChosen('Pedra'),
+                            onTap: () {
+                              computerMove = gameChoices[
+                                  _randomPick.nextInt(gameChoices.length)];
+                              result = getWinner("pedra", computerMove);
+                              stateChange(result);
+                            },
                           ),
                         ),
                       ),
@@ -135,7 +134,7 @@ class _BattlePageState extends State<BattlePage> {
                         child: Card(
                           color: kColor3,
                           shape: const CircleBorder(),
-                          elevation: 0,
+                          elevation: 1,
                           child: InkWell(
                             radius: 45,
                             focusColor: Colors.transparent,
@@ -157,7 +156,7 @@ class _BattlePageState extends State<BattlePage> {
                         child: Card(
                           color: kColor3,
                           shape: const CircleBorder(),
-                          elevation: 0,
+                          elevation: 1,
                           child: InkWell(
                             radius: 45,
                             focusColor: Colors.transparent,
@@ -178,7 +177,7 @@ class _BattlePageState extends State<BattlePage> {
                     ],
                   ),
                   const SizedBox(
-                    height: 25,
+                    height: 20,
                   ),
                   Card(
                     color: kColor4,
@@ -187,7 +186,7 @@ class _BattlePageState extends State<BattlePage> {
                       child: Container(
                         alignment: Alignment.center,
                         width: 200.0,
-                        height: 34.0,
+                        height: 36.0,
                         padding: const EdgeInsets.all(5),
                         child: const Text(
                           'Reiniciar',
