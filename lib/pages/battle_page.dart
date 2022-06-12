@@ -111,7 +111,7 @@ class _BattlePageState extends State<BattlePage> {
                         child: Card(
                           color: kColor3,
                           shape: const CircleBorder(),
-                          elevation: 0,
+                          elevation: 1,
                           child: InkWell(
                             radius: 45,
                             focusColor: Colors.transparent,
@@ -133,7 +133,7 @@ class _BattlePageState extends State<BattlePage> {
                         child: Card(
                           color: kColor3,
                           shape: const CircleBorder(),
-                          elevation: 0,
+                          elevation: 1,
                           child: InkWell(
                             radius: 45,
                             focusColor: Colors.transparent,
@@ -155,7 +155,7 @@ class _BattlePageState extends State<BattlePage> {
                         child: Card(
                           color: kColor3,
                           shape: const CircleBorder(),
-                          elevation: 0,
+                          elevation: 1,
                           child: InkWell(
                             radius: 45,
                             focusColor: Colors.transparent,
@@ -185,7 +185,7 @@ class _BattlePageState extends State<BattlePage> {
                       child: Container(
                         alignment: Alignment.center,
                         width: 200.0,
-                        height: 32.0,
+                        height: 36.0,
                         padding: const EdgeInsets.all(5),
                         child: const Text(
                           'Reiniciar',
