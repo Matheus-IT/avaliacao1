@@ -176,14 +176,16 @@ class _BattlePageState extends State<BattlePage> {
                     ],
                   ),
                   const SizedBox(
-                    height: 25,
+                    height: 20,
                   ),
                   Card(
                     color: kColor4,
                     elevation: 2,
                     child: InkWell(
                       child: Container(
-                        width: 100.0,
+                        alignment: Alignment.center,
+                        width: 200.0,
+                        height: 32.0,
                         padding: const EdgeInsets.all(5),
                         child: const Text(
                           'Reiniciar',
