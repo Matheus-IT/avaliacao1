@@ -60,7 +60,7 @@ class _BattlePageState extends State<BattlePage> {
           Stack(
             children: [
               Container(
-                height: screenSize.height * .38,
+                height: screenSize.height * .35,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('lib/assets/images/enemy.png'),
@@ -70,7 +70,15 @@ class _BattlePageState extends State<BattlePage> {
               ),
             ],
           ),
-          const SizedBox(height: 95),
+          const SizedBox(
+            height: 80,
+            child: Center(
+              child: AccentText(
+                content: 'VS',
+                fontSize: 50,
+              ),
+            ),
+          ),
           Align(
             heightFactor: 1.0,
             child: Container(
