@@ -19,6 +19,7 @@ class _GamePageState extends State<GamePage> {
   final player = Player(profile: Profile.person);
   final computer = Player(profile: Profile.computer);
 
+  final String initialText = 'Faça sua jogada';
   String battleMessage = 'Faça sua jogada';
 
   String _translateGameElement(GameElement element) {
@@ -79,6 +80,14 @@ class _GamePageState extends State<GamePage> {
             computerChoice == GameElement.paper;
   }
 
+  void initializeGame() {
+    setState(() {
+      player.points = 0;
+      computer.points = 0;
+      battleMessage = initialText;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -130,6 +139,24 @@ class _GamePageState extends State<GamePage> {
                           handleElementChosen(GameElement.paper),
                     )
                   ],
+                  restartButton: Card(
+                    color: kColor4,
+                    elevation: 2,
+                    child: InkWell(
+                      onTap: initializeGame,
+                      child: Container(
+                        width: 200.0,
+                        height: 34.0,
+                        alignment: Alignment.center,
+                        padding: const EdgeInsets.all(5),
+                        child: const Text(
+                          'Reiniciar',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: kWhite),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
