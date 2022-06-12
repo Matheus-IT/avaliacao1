@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:prog4_avaliacao1/components/bottom_info.dart';
 import '../components/accent_text.dart';
 import '../models/game_functions.dart';
 import '../consts/colors.dart';
@@ -12,13 +13,7 @@ class BattlePage extends StatefulWidget {
 }
 
 class _BattlePageState extends State<BattlePage> {
-
-
-  var gameChoices = [
-    "pedra", 
-    "papel", 
-    "tesoura"
-    ];
+  var gameChoices = ["pedra", "papel", "tesoura"];
 
   final _randomPick = Random();
 
@@ -30,7 +25,7 @@ class _BattlePageState extends State<BattlePage> {
   };
 
   var battleMessenger = {
-   -1: kWhite, //neutral color for the first move
+    -1: kWhite, //neutral color for the first move
     0: kColor5,
     1: kColor6,
     2: kColor7,
@@ -43,7 +38,6 @@ class _BattlePageState extends State<BattlePage> {
   int computerPoints = 0;
   int loseCondition = 0;
 
-
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -52,130 +46,138 @@ class _BattlePageState extends State<BattlePage> {
       appBar: AppBar(
         title: const AccentText(content: 'Jokenpô', fontSize: 46.0),
         backgroundColor: kColor3,
-        actions: [SizedBox(
-          width: 150,
-          child: scoreCounter(playerPoints, computerPoints),
-        )
-       ],
+        actions: [
+          SizedBox(
+            width: 150,
+            child: scoreCounter(playerPoints, computerPoints),
+          )
+        ],
       ),
       body: ListView(
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: false,
         children: <Widget>[
           Stack(
-            children:[ 
-                Container(
-                height: screenSize.height * .45,
+            children: [
+              Container(
+                height: screenSize.height * .38,
                 decoration: const BoxDecoration(
-                image: DecorationImage(
-                image: AssetImage('lib/assets/images/enemy.png'),
-                fit: BoxFit.cover,
+                  image: DecorationImage(
+                    image: AssetImage('lib/assets/images/enemy.png'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
-             ),
-            ),
-          ],
-        ),
-          const SizedBox(
-            height: 95),
+            ],
+          ),
+          const SizedBox(height: 95),
           Align(
             heightFactor: 1.0,
             child: Container(
               width: 600,
               height: screenSize.height * 35,
               decoration: const BoxDecoration(
-              color: kColor3,
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15))
-              ),
+                  color: kColor3,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(15),
+                      topRight: Radius.circular(15))),
               child: Column(
                 children: [
                   Card(
                     color: battleMessenger[result],
                     shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                ),
-                elevation: 0,
-                child: Container(
-                  alignment: Alignment.center,
-                  width: 350,height: 55,
-                  padding: const EdgeInsets.all(5),
-                  child: Text(
-                    computerMove == "" || result == -1
-                    ? "Faça sua jogada" : "Computador jogou $computerMove. ${gameplay[result.toString()]}",
-                    style: const TextStyle(
-                      fontSize: 15,
-                      fontFamily: 'LDFComicSans',
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    elevation: 0,
+                    child: Container(
+                      alignment: Alignment.center,
+                      width: 350,
+                      height: 55,
+                      padding: const EdgeInsets.all(5),
+                      child: Text(
+                        computerMove == "" || result == -1
+                            ? "Faça sua jogada"
+                            : "Computador jogou $computerMove. ${gameplay[result.toString()]}",
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontFamily: 'LDFComicSans',
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
                   Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: Card(
-                        color: kColor3,
-                        shape: const CircleBorder(),
-                        elevation: 0,
-                        child: InkWell(
-                          radius: 45,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          splashColor: kColor4,
-                          child: getImage("lib/assets/icons/rock.png", context),                          
-                          onTap: () {
-                            computerMove = gameChoices[
-                            _randomPick.nextInt(gameChoices.length)];
-                            result = getWinner("pedra", computerMove);
-                            stateChange(result);
-                          },
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Card(
-                        color: kColor3,
-                        shape: const CircleBorder(),
-                        elevation: 0,
-                        child: InkWell(
-                          radius: 45,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          splashColor: kColor4,
-                          child: getImage("lib/assets/icons/paper.png", context),
+                    children: <Widget>[
+                      Expanded(
+                        child: Card(
+                          color: kColor3,
+                          shape: const CircleBorder(),
+                          elevation: 0,
+                          child: InkWell(
+                            radius: 45,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            splashColor: kColor4,
+                            child:
+                                getImage("lib/assets/icons/rock.png", context),
                             onTap: () {
                               computerMove = gameChoices[
-                              _randomPick.nextInt(gameChoices.length)];
+                                  _randomPick.nextInt(gameChoices.length)];
+                              result = getWinner("pedra", computerMove);
+                              stateChange(result);
+                            },
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Card(
+                          color: kColor3,
+                          shape: const CircleBorder(),
+                          elevation: 0,
+                          child: InkWell(
+                            radius: 45,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            splashColor: kColor4,
+                            child:
+                                getImage("lib/assets/icons/paper.png", context),
+                            onTap: () {
+                              computerMove = gameChoices[
+                                  _randomPick.nextInt(gameChoices.length)];
                               result = getWinner("papel", computerMove);
                               stateChange(result);
-                          },
+                            },
+                          ),
                         ),
                       ),
-                    ),
-                    Expanded(
-                      child: Card(
-                        color: kColor3,
-                        shape: const CircleBorder(),
-                        elevation: 0,
-                        child: InkWell(
-                          radius: 45,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          splashColor: kColor4,
-                          child: getImage("lib/assets/icons/scissors.png", context),
+                      Expanded(
+                        child: Card(
+                          color: kColor3,
+                          shape: const CircleBorder(),
+                          elevation: 0,
+                          child: InkWell(
+                            radius: 45,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            splashColor: kColor4,
+                            child: getImage(
+                                "lib/assets/icons/scissors.png", context),
                             onTap: () {
                               computerMove = gameChoices[
-                              _randomPick.nextInt(gameChoices.length)];
+                                  _randomPick.nextInt(gameChoices.length)];
                               result = getWinner("tesoura", computerMove);
                               stateChange(result);
-                          },
+                            },
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                 ),
-                 const SizedBox(height: 25,),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 25,
+                  ),
                   Card(
                     color: kColor4,
                     elevation: 2,
@@ -183,7 +185,11 @@ class _BattlePageState extends State<BattlePage> {
                       child: Container(
                         width: 100.0,
                         padding: const EdgeInsets.all(5),
-                        child: const Text('Reiniciar',textAlign: TextAlign.center,style: TextStyle(color: kWhite),),
+                        child: const Text(
+                          'Reiniciar',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: kWhite),
+                        ),
                       ),
                       onTap: () {
                         setState(() {
@@ -196,19 +202,21 @@ class _BattlePageState extends State<BattlePage> {
                       },
                     ),
                   )
-               ],
+                ],
               ),
             ),
           ),
         ],
       ),
+      bottomNavigationBar: const BottomLabel(),
     );
   }
 
   int getWinner(String playerChoice, String computerChoice) {
-    if (playerChoice == "pedra"){
+    if (playerChoice == "pedra") {
       loseCondition++;
-    }if(loseCondition > 1){
+    }
+    if (loseCondition > 1) {
       return 3;
     }
     if ((playerChoice == "pedra" && computerChoice == "papel") ||
@@ -233,10 +241,10 @@ class _BattlePageState extends State<BattlePage> {
       } else if (result == 1) {
         playerPoints = playerPoints + 1;
         computerPoints = computerPoints;
-      } else if (result == 3){
+      } else if (result == 3) {
         computerPoints = computerPoints + 1;
         loseCondition = 0;
-      }else {
+      } else {
         playerPoints = playerPoints;
         computerPoints = computerPoints;
       }
