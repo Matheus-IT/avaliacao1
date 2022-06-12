@@ -75,7 +75,7 @@ class _GameScreenState extends State<GameScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: const [
                 RegularText(
-                  content: 'P: 1',
+                  content: 'P: 0',
                   fontSize: 25,
                   color: kBlack,
                 ),
