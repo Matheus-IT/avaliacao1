@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:prog4_avaliacao1/components/bottom_info.dart';
+import 'package:prog4_avaliacao1/models/enemy.dart';
 import '../components/accent_text.dart';
 import '../models/game_functions.dart';
 import '../consts/colors.dart';
@@ -37,6 +38,7 @@ class _BattlePageState extends State<BattlePage> {
   int playerPoints = 0;
   int computerPoints = 0;
   int loseCondition = 0;
+  var enemyMood = "lib/assets/images/enemy.png";
 
   @override
   Widget build(BuildContext context) {
@@ -59,15 +61,12 @@ class _BattlePageState extends State<BattlePage> {
         children: <Widget>[
           Stack(
             children: [
-              Container(
+              SizedBox(
                 height: screenSize.height * .35,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('lib/assets/images/enemy.png'),
-                    fit: BoxFit.cover,
-                  ),
+                child: EnemyCard(
+                  imgFile: enemyMood,
                 ),
-              ),
+              )
             ],
           ),
           const SizedBox(
@@ -83,7 +82,7 @@ class _BattlePageState extends State<BattlePage> {
             heightFactor: 1.0,
             child: Container(
               width: 600,
-              height: screenSize.height * 45,
+              height: screenSize.height * .45,
               decoration: const BoxDecoration(
                   color: kColor3,
                   borderRadius: BorderRadius.only(
@@ -209,6 +208,8 @@ class _BattlePageState extends State<BattlePage> {
                           computerMove = "";
                           result = -1;
                           loseCondition = 0;
+                          enemyMood = "lib/assets/images/enemy.png";
+
                         });
                       },
                     ),
@@ -249,13 +250,17 @@ class _BattlePageState extends State<BattlePage> {
         playerPoints = playerPoints;
         computerPoints = computerPoints + 1;
         loseCondition = 0;
+        enemyMood = "lib/assets/images/happyenemy.png";
       } else if (result == 1) {
         playerPoints = playerPoints + 1;
         computerPoints = computerPoints;
+        enemyMood = "lib/assets/images/madenemy.png";
       } else if (result == 3) {
         computerPoints = computerPoints + 1;
         loseCondition = 0;
+        enemyMood = "lib/assets/images/happyenemy.png";
       } else {
+        enemyMood = "lib/assets/images/enemy.png";
         playerPoints = playerPoints;
         computerPoints = computerPoints;
       }

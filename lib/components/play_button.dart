@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:prog4_avaliacao1/pages/battle_page.dart';
+//import 'package:prog4_avaliacao1/pages/battle_page.dart';
 
 import '../consts/colors.dart';
+import '../pages/battle_page.dart';
 
 class PlayButton extends StatelessWidget {
   const PlayButton({
