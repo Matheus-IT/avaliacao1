@@ -48,7 +48,11 @@ app.*.map.json
 
 android/
 ios/
+<<<<<<< HEAD
 linux/
 macos/
+=======
+mac/
+>>>>>>> ae68922b17a542f22730d3581069e654862466d3
 web/
 windows/
